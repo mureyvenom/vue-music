@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue';
+import Header from '../components/HeaderComponent.vue';
+import Introduction from '../components/IntroductionComponent.vue';
+import MainContent from '../components/MainContentComponent.vue';
+import Player from '../components/PlayerComponent.vue';
+import AuthModal from '../components/AuthModalComponent.vue';
+// export default {};
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Header />
+    <Introduction />
+    <MainContent />
+    <Player />
+    <AuthModal />
   </main>
 </template>
