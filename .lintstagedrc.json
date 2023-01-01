@@ -1,0 +1,6 @@
+{
+  "*.{tsx,ts,vue,js,jsx}": [
+    "eslint --cache --max-warnings=0 ./src",
+    "prettier --write --ignore-unknown ."
+  ]
+}
