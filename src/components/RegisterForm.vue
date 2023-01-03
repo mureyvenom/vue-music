@@ -1,4 +1,7 @@
 <script lang="ts">
+import { mapActions } from 'pinia';
+import { useUserStore } from '@/stores/user';
+
 export default {
   data() {
     return {
@@ -21,18 +24,30 @@ export default {
     };
   },
   methods: {
-    register(values: any) {
-      console.log('reg_values', values);
-      this.reg_loading = true;
-      this.reg_alert = true;
-      this.reg_alert_color = 'bg-blue-500';
-      this.reg_alert_message = 'Account is being created';
+    ...mapActions(useUserStore, {
+      createUser: 'register',
+    }),
+    async register(values: any) {
+      try {
+        this.reg_loading = true;
+        this.reg_alert = true;
+        this.reg_alert_color = 'bg-blue-500';
+        this.reg_alert_message = 'Account is being created';
 
-      setTimeout(() => {
+        await this.createUser(values);
+
         this.reg_alert_color = 'bg-green-500';
         this.reg_alert_message = 'Account created';
         this.reg_loading = false;
-      }, 2000);
+      } catch (error) {
+        console.log(JSON.stringify(error));
+        const err = error as { message: string; code: string | number };
+        console.log(JSON.stringify(err));
+        this.reg_loading = false;
+        this.reg_alert = true;
+        this.reg_alert_color = 'bg-red-500';
+        this.reg_alert_message = err?.message || 'Something went wrong';
+      }
     },
   },
 };

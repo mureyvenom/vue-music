@@ -1,4 +1,7 @@
 <script lang="ts">
+import { useUserStore } from '@/stores/user';
+import { mapActions } from 'pinia';
+
 export default {
   data() {
     return {
@@ -13,18 +16,30 @@ export default {
     };
   },
   methods: {
-    login(values: any) {
-      console.log('login_values', values);
-      this.login_loading = true;
-      this.login_alert = true;
-      this.login_alert_color = 'bg-blue-500';
-      this.login_alert_message = 'Logging in...';
+    ...mapActions(useUserStore, {
+      authenticateUser: 'login',
+    }),
+    async login(values: any) {
+      try {
+        this.login_loading = true;
+        this.login_alert = true;
+        this.login_alert_color = 'bg-blue-500';
+        this.login_alert_message = 'Logging in...';
 
-      setTimeout(() => {
+        await this.authenticateUser(values);
+
         this.login_alert_color = 'bg-green-500';
         this.login_alert_message = 'Successfully logged in';
         this.login_loading = false;
-      }, 2000);
+      } catch (error) {
+        console.log(JSON.stringify(error));
+        const err = error as { message: string; code: string | number };
+        console.log(JSON.stringify(err));
+        this.login_loading = false;
+        this.login_alert = true;
+        this.login_alert_color = 'bg-red-500';
+        this.login_alert_message = err?.message || 'Something went wrong';
+      }
     },
   },
 };
