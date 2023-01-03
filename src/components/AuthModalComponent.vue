@@ -76,9 +76,9 @@ export default {
           </ul>
 
           <!-- Login Form -->
-          <LoginForm v-show="tab === 'login'" />
+          <LoginForm v-show="tab === 'login'" @close="modalOpen = false" />
           <!-- Registration Form -->
-          <RegisterForm v-show="tab === 'register'" />
+          <RegisterForm v-show="tab === 'register'" @close="modalOpen = false" />
         </div>
       </div>
     </div>

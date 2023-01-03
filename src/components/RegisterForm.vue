@@ -39,6 +39,7 @@ export default {
         this.reg_alert_color = 'bg-green-500';
         this.reg_alert_message = 'Account created';
         this.reg_loading = false;
+        this.$emit('close');
       } catch (error) {
         console.log(JSON.stringify(error));
         const err = error as { message: string; code: string | number };
@@ -50,6 +51,7 @@ export default {
       }
     },
   },
+  emits: ['close'],
 };
 </script>
 

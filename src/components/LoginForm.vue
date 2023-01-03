@@ -31,6 +31,7 @@ export default {
         this.login_alert_color = 'bg-green-500';
         this.login_alert_message = 'Successfully logged in';
         this.login_loading = false;
+        this.$emit('close');
       } catch (error) {
         console.log(JSON.stringify(error));
         const err = error as { message: string; code: string | number };
@@ -42,6 +43,7 @@ export default {
       }
     },
   },
+  emits: ['close'],
 };
 </script>
 
