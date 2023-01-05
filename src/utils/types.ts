@@ -7,4 +7,12 @@ export interface StoredSong {
   uid: string;
   url: string;
   docId: string;
+  artist: string;
+}
+
+export interface User {
+  age: number | string;
+  country: string;
+  email: string;
+  name: string;
 }

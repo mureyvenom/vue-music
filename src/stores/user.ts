@@ -1,6 +1,11 @@
 // import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from 'firebase/auth';
 import { auth, db } from '@/utils/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -25,9 +30,10 @@ export const useUserStore = defineStore('user', {
           name,
           country,
         });
+        await updateProfile(user.user, { displayName: name });
         this.loggedIn = true;
       } catch (error) {
-        console.log(JSON.stringify(error));
+        console.log(error);
       }
     },
     async login(values: any) {

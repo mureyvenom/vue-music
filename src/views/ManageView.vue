@@ -44,7 +44,6 @@ export default {
           fetchedSongs.push(song as StoredSong);
         });
         this.songs = fetchedSongs;
-        console.log('songs', fetchedSongs);
       } catch (error) {
         console.log(error);
       }
