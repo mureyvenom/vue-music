@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { StoredSong } from '@/utils/types';
+import { RouterLink } from 'vue-router';
 
 export default {
   props: {
@@ -7,6 +8,9 @@ export default {
       type: Object as () => StoredSong,
       required: true,
     },
+  },
+  components: {
+    RouterLink,
   },
 };
 </script>
@@ -16,7 +20,9 @@ export default {
     class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
   >
     <div>
-      <a href="#" class="font-bold block text-gray-600">{{ song.modifiedName }}</a>
+      <RouterLink :to="`/song/${song.docId}`" class="font-bold block text-gray-600">{{
+        song.modifiedName
+      }}</RouterLink>
       <span class="text-gray-500 text-sm">{{ song.displayName }}</span>
     </div>
 

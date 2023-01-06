@@ -27,6 +27,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/song/:id',
+      // name: 'home',
+      component: () => import('@/views/SongView.vue'),
+      // meta: {
+      //   requiresAuth: true,
+      // },
+    },
+    {
       path: '/:catchAll(.*)*',
       redirect: {
         path: '/',

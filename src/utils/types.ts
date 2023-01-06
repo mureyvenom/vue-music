@@ -7,7 +7,6 @@ export interface StoredSong {
   uid: string;
   url: string;
   docId: string;
-  artist: string;
 }
 
 export interface User {
@@ -15,4 +14,13 @@ export interface User {
   country: string;
   email: string;
   name: string;
+}
+
+export interface Comment {
+  comment: string;
+  userId: string;
+  songId: string;
+  docId: string;
+  displayName: string;
+  dateAdded: string;
 }
