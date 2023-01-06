@@ -1,13 +1,20 @@
-<script setup lang="ts">
-// import image from '../assets/images/header.png';
+<script lang="ts">
+import image from '@/assets/images/header.png';
 import intromusic from '@/assets/images/introduction-music.png';
+
+export default {
+  computed: {
+    banner: () => image,
+    intromusic: () => intromusic,
+  },
+};
 </script>
 
 <template>
   <section class="mb-8 py-20 text-white text-center relative">
     <div
       class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-      style="background-image: url(src/assets/images/header.png)"
+      :style="{ backgroundImage: `url(${banner})` }"
     ></div>
     <div class="container mx-auto">
       <div class="text-white main-header-content">

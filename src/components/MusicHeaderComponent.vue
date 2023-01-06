@@ -2,6 +2,7 @@
 import type { StoredSong } from '@/utils/types';
 import { mapActions, mapState } from 'pinia';
 import { usePlayerStore } from '@/stores/player';
+import songheader from '@/assets/images/song-header.png';
 
 export default {
   props: {
@@ -24,6 +25,9 @@ export default {
       ...mapState(usePlayerStore, ['playing', 'currentSong']),
     };
   },
+  computed: {
+    songheader: () => songheader,
+  },
 };
 </script>
 
@@ -31,7 +35,7 @@ export default {
   <section class="w-full mb-8 py-14 text-center text-white relative">
     <div
       class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
-      style="background-image: url(../../src/assets/images/song-header.png)"
+      :style="{ backgroundImage: `url(${songheader})` }"
     ></div>
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
