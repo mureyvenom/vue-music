@@ -11,11 +11,6 @@ import { doc, setDoc } from 'firebase/firestore';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    // id: null,
-    // email: null,
-    // age: null,
-    // name: null,
-    // country: null,
     loggedIn: false,
   }),
   actions: {
@@ -55,9 +50,4 @@ export const useUserStore = defineStore('user', {
       }
     },
   },
-  // getters: {
-  //   hiddenClass(state): string {
-  //     return !state.isOpen ? 'hidden' : '';
-  //   },
-  // },
 });
