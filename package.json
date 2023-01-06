@@ -18,10 +18,12 @@
     "@vee-validate/rules": "^4.7.3",
     "firebase": "^9.15.0",
     "howler": "^2.2.3",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "pinia": "^2.0.28",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -31,6 +33,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/howler": "^2.2.7",
     "@types/jsdom": "^20.0.1",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.12",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",

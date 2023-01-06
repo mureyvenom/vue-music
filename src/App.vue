@@ -5,12 +5,14 @@ import { auth } from '@/utils/firebase';
 import { useUserStore } from '@/stores/user';
 import { mapWritableState } from 'pinia';
 import Player from '@/components/PlayerComponent.vue';
+import AuthModal from './components/AuthModalComponent.vue';
 
 export default {
   components: {
     AppHeader,
     RouterView,
     Player,
+    AuthModal,
   },
   computed: {
     ...mapWritableState(useUserStore, ['loggedIn']),
@@ -27,4 +29,5 @@ export default {
   <AppHeader />
   <RouterView />
   <Player />
+  <AuthModal />
 </template>

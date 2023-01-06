@@ -144,7 +144,7 @@ export default {
           value="true"
           class="w-4 h-4 float-left -ml-6 mt-1 rounded"
         />
-        <label class="inline-block">Accept terms of service</label>
+        <label class="inline-block">{{ $t('register.accept') }} {{ $t('register.tos') }}</label>
         <ErrorMessage class="text-red-600" name="tos" />
       </div>
       <button

@@ -23,6 +23,12 @@ export default {
         this.$router.replace('/');
       }
     },
+    currentLocale() {
+      return this.$i18n.locale === 'fr' ? 'French' : 'English';
+    },
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'fr' ? 'en' : 'fr';
+    },
   },
   components: {
     RouterLink,
@@ -55,6 +61,13 @@ export default {
           </li>
           <li v-else>
             <a class="px-2 text-white" href="#" @click.prevent="logUserOut">Sign Out</a>
+          </li>
+        </ul>
+        <ul class="ml-auto">
+          <li>
+            <a class="px-2 text-white" href="#" @click.prevent="changeLocale">
+              {{ currentLocale() }}
+            </a>
           </li>
         </ul>
       </div>

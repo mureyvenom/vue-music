@@ -3,7 +3,7 @@ import MusicHeaderComponent from '@/components/MusicHeaderComponent.vue';
 import CommentForm from '@/components/CommentForm.vue';
 import CommentsComponent from '@/components/CommentsComponent.vue';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '@/utils/firebase';
+import { db, auth } from '@/utils/firebase';
 import type { StoredSong, Comment } from '@/utils/types';
 
 export default {
@@ -18,6 +18,9 @@ export default {
       loading: false,
       comments: [] as Comment[],
     };
+  },
+  computed: {
+    auth: () => auth,
   },
   methods: {
     async getSong() {
@@ -79,7 +82,13 @@ export default {
 
 <template>
   <MusicHeaderComponent :song="song" />
-  <CommentForm :song="song" @commentadded="updateComments" />
+  <CommentForm :song="song" @commentadded="updateComments" v-if="auth.currentUser?.uid" />
+  <div
+    class="container mx-auto mt-6 bg-blue-400 p-4 rounded mb-4 text-white font-bold text-xl"
+    v-else
+  >
+    Sign in to comment
+  </div>
   <CommentsComponent
     :comments="
       comments?.sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime())

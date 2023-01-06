@@ -1,7 +1,6 @@
 <script lang="ts">
 import Introduction from '@/components/IntroductionComponent.vue';
 import MainContent from '@/components/MainContentComponent.vue';
-import AuthModal from '@/components/AuthModalComponent.vue';
 import {
   collection,
   getDocs,
@@ -18,7 +17,6 @@ export default {
   components: {
     Introduction,
     MainContent,
-    AuthModal,
   },
   async created() {
     await this.getSongs();
@@ -105,6 +103,5 @@ export default {
   <main>
     <Introduction />
     <MainContent :songs="songs" />
-    <AuthModal />
   </main>
 </template>
